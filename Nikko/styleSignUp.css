@@ -1,0 +1,133 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    background-color: #EAFDFC;
+}
+
+.Logo {
+    height: 280px;
+    width: 280px;
+    position: absolute;
+    top: 8%;
+    left: 15%;
+}
+
+.welcome-text {
+    position: absolute;
+    top: 14%;
+    left: 35%;
+}
+
+.welcome-text h2 {
+    color: #103365;
+    font-size: 50px;
+}
+
+.hr-line {
+    position: absolute;
+    top: 21%;
+    left: 33%;
+    height: 10px;
+    width: 650px;
+    background-color: #103365;
+}
+
+.account-text {
+    position: absolute;
+    top: 23%;
+    left: 33%;
+}
+
+.account-text h2 {
+    color: #103365;
+    font-size: 30px;
+}
+
+.email-field {
+    position: absolute;
+    top: 30%;
+    left: 39%;
+    width: 430px;
+    height: 30px;
+    border-radius: 100px/80px;
+    padding: 20px;
+}
+
+.fname-field {
+    position: absolute;
+    top: 36%;
+    left: 39%;
+    width: 430px;
+    height: 30px;
+    border-radius: 100px/80px;
+    padding: 20px;
+}
+
+.lname-field {
+    position: absolute;
+    top: 42%;
+    left: 39%;
+    width: 430px;
+    height: 30px;
+    border-radius: 100px/80px;
+    padding: 20px;
+}
+
+.contact-field {
+    position: absolute;
+    top: 48%;
+    left: 39%;
+    width: 430px;
+    height: 30px;
+    border-radius: 100px/80px;
+    padding: 20px;
+}
+
+.address-field {
+    position: absolute;
+    top: 54%;
+    left: 39%;
+    width: 430px;
+    height: 30px;
+    border-radius: 100px/80px;
+    padding: 20px;
+}
+
+.password-field {
+    position: absolute;
+    top: 60%;
+    left: 39%;
+    width: 430px;
+    height: 30px;
+    border-radius: 100px/80px;
+    padding: 20px;
+}
+
+.confirmPass-field {
+    position: absolute;
+    top: 66%;
+    left: 39%;
+    width: 430px;
+    height: 30px;
+    border-radius: 100px/80px;
+    padding: 20px;
+}
+
+.btn-login {
+    position: absolute;
+    top: 75%;
+    left: 48%;
+    width: 100px;
+    height: 32px;
+    color: #103365;
+    background-color: #82AAE3;
+    font-size: 20px;
+    border-radius: 100px/80px;
+    cursor: pointer;
+}
