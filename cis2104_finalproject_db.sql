@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 01, 2023 at 04:02 PM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
+-- Generation Time: May 08, 2023 at 06:36 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,27 +24,43 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `cosumer_chart`
+--
+
+CREATE TABLE `cosumer_chart` (
+  `ID` int(8) NOT NULL,
+  `CUSTOMER_ID_FK` int(11) NOT NULL,
+  `PRODUCT_ID_FK` int(11) NOT NULL,
+  `REQUEST_ID_FK` int(11) NOT NULL,
+  `TYPE` varchar(50) NOT NULL,
+  `ORDER_QUANTITY` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `customers`
 --
 
 CREATE TABLE `customers` (
   `ID` int(8) NOT NULL,
-  `FIRST_NAME` varchar(100) NOT NULL,
-  `LAST_NAME` varchar(100) NOT NULL,
-  `CONTACT_NUMBER` bigint(11) NOT NULL,
-  `EMAIL` varchar(100) NOT NULL,
-  `PASSWORD` varchar(100) NOT NULL,
-  `ADDRESS` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `USER_IMG` varchar(100) NOT NULL,
+  `USER_FIRST_NAME` varchar(100) NOT NULL,
+  `USER_LAST_NAME` varchar(100) NOT NULL,
+  `USER_CONTACT_NUMBER` bigint(11) NOT NULL,
+  `USER_EMAIL` varchar(100) NOT NULL,
+  `USER_PASSWORD` varchar(100) NOT NULL,
+  `USER_ADDRESS` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `customers`
 --
 
-INSERT INTO `customers` (`ID`, `FIRST_NAME`, `LAST_NAME`, `CONTACT_NUMBER`, `EMAIL`, `PASSWORD`, `ADDRESS`) VALUES
-(1, 'Justin', 'Oport', 9123456789, 'justin@gmail.com', 'justin', 'Mandaue City, Guizo'),
-(2, 'Mary Rascel', 'Mayol', 9987456321, 'mary@gmail.com', 'mary', 'Canduman, Mandaue City'),
-(3, 'Lianne Raine', 'Badinas', 9369852147, 'lianne@gmail.com ', 'lianne', 'Talisay City, Cebu');
+INSERT INTO `customers` (`ID`, `USER_IMG`, `USER_FIRST_NAME`, `USER_LAST_NAME`, `USER_CONTACT_NUMBER`, `USER_EMAIL`, `USER_PASSWORD`, `USER_ADDRESS`) VALUES
+(1, '', 'Justin', 'Oport', 9123456789, 'justin@gmail.com', 'justin', 'Mandaue City, Guizo'),
+(2, '', 'Mary Rascel', 'Mayol', 9987456321, 'mary@gmail.com', 'mary', 'Canduman, Mandaue City'),
+(3, '', 'Lianne Raine', 'Badinas', 9369852147, 'lianne@gmail.com ', 'lianne', 'Talisay City, Cebu');
 
 -- --------------------------------------------------------
 
@@ -57,10 +73,10 @@ CREATE TABLE `orderslip` (
   `CUSTOMER_ID_FK` int(11) NOT NULL,
   `PRODUCT_ID_FK` int(11) NOT NULL,
   `REQUEST_ID_FK` int(11) NOT NULL,
-  `TYPE` int(11) NOT NULL,
-  `QUANTITY` int(11) NOT NULL,
-  `STATUS` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `ORDER_TYPE` varchar(50) NOT NULL,
+  `ORDER_QUANTITY` int(11) NOT NULL,
+  `ORDER_STATUS` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -70,10 +86,20 @@ CREATE TABLE `orderslip` (
 
 CREATE TABLE `product` (
   `ID` int(8) NOT NULL,
-  `NAME` varchar(100) NOT NULL,
-  `PRICE` bigint(20) NOT NULL,
-  `QUANTITY` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `PROD_IMG` varchar(25) NOT NULL,
+  `PROD_NAME` varchar(100) NOT NULL,
+  `PROD_DESC` text NOT NULL,
+  `PROD_PRICE` bigint(20) NOT NULL,
+  `PROD_QUANTITY` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `product`
+--
+
+INSERT INTO `product` (`ID`, `PROD_IMG`, `PROD_NAME`, `PROD_DESC`, `PROD_PRICE`, `PROD_QUANTITY`) VALUES
+(1, 'type1.jpg', 'Chair', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam modi magni iure minus id sint odit quaerat explicabo voluptatibus animi sit, corporis consequatur nisi nemo non fugiat odio alias sunt ', 500, 15),
+(2, 'chair.png', 'Table', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam modi magni iure minus id sint odit quaerat explicabo voluptatibus animi sit, corporis consequatur nisi nemo non fugiat odio alias sunt ', 300, 10);
 
 -- --------------------------------------------------------
 
@@ -87,7 +113,7 @@ CREATE TABLE `purchase_records` (
   `PRODUCT_ID_FK` int(11) NOT NULL,
   `REQUEST_ID_FK` int(11) NOT NULL,
   `DATE_RECORDED` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -99,13 +125,22 @@ CREATE TABLE `request_order` (
   `ID` int(8) NOT NULL,
   `CUSTOMER_ID_FK` int(11) NOT NULL,
   `PRODUCT_ID_FK` int(11) NOT NULL,
-  `DESCRIPTION` longtext NOT NULL,
-  `STATUS` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `REQUEST_DESCRIPTION` longtext NOT NULL,
+  `REQUEST_STATUS` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `cosumer_chart`
+--
+ALTER TABLE `cosumer_chart`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `CUSTOMER_ID_FK` (`CUSTOMER_ID_FK`),
+  ADD KEY `PRODUCT_ID_FK` (`PRODUCT_ID_FK`),
+  ADD KEY `REQUEST_ID_FK` (`REQUEST_ID_FK`);
 
 --
 -- Indexes for table `customers`
@@ -120,7 +155,8 @@ ALTER TABLE `orderslip`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `CUSTOMER_ID_FK` (`CUSTOMER_ID_FK`),
   ADD KEY `PRODUCT_ID_FK` (`PRODUCT_ID_FK`),
-  ADD KEY `REQUEST_ID_FK` (`REQUEST_ID_FK`);
+  ADD KEY `REQUEST_ID_FK` (`REQUEST_ID_FK`),
+  ADD KEY `REQUEST_ID_FK_2` (`REQUEST_ID_FK`);
 
 --
 -- Indexes for table `product`
@@ -150,6 +186,12 @@ ALTER TABLE `request_order`
 --
 
 --
+-- AUTO_INCREMENT for table `cosumer_chart`
+--
+ALTER TABLE `cosumer_chart`
+  MODIFY `ID` int(8) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
@@ -165,7 +207,7 @@ ALTER TABLE `orderslip`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `ID` int(8) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `purchase_records`
