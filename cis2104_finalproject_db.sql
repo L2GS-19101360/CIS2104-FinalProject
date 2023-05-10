@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 10, 2023 at 12:34 PM
+-- Generation Time: May 10, 2023 at 05:26 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -83,6 +83,7 @@ CREATE TABLE `orderslip` (
   `CUSTOMER_ID_FK` int(11) NOT NULL,
   `PRODUCT_ID_FK` int(11) NOT NULL,
   `REQUEST_ID_FK` int(11) NOT NULL,
+  `ORDER_PRICE` int(11) NOT NULL,
   `ORDER_TYPE` enum('READY-MADE','CUSTOM-MADE') NOT NULL DEFAULT 'READY-MADE',
   `ORDER_QUANTITY` int(11) NOT NULL,
   `ORDER_STATUS` enum('PENDING','COMPLETE') NOT NULL DEFAULT 'PENDING'
@@ -92,9 +93,15 @@ CREATE TABLE `orderslip` (
 -- Dumping data for table `orderslip`
 --
 
-INSERT INTO `orderslip` (`ID`, `CUSTOMER_ID_FK`, `PRODUCT_ID_FK`, `REQUEST_ID_FK`, `ORDER_TYPE`, `ORDER_QUANTITY`, `ORDER_STATUS`) VALUES
-(1, 4, 2, 0, 'READY-MADE', 1, 'PENDING'),
-(2, 4, 1, 0, 'READY-MADE', 5, 'PENDING');
+INSERT INTO `orderslip` (`ID`, `CUSTOMER_ID_FK`, `PRODUCT_ID_FK`, `REQUEST_ID_FK`, `ORDER_PRICE`, `ORDER_TYPE`, `ORDER_QUANTITY`, `ORDER_STATUS`) VALUES
+(1, 4, 2, 0, 300, 'READY-MADE', 1, 'PENDING'),
+(2, 4, 1, 0, 500, 'READY-MADE', 5, 'PENDING'),
+(3, 3, 1, 0, 500, 'READY-MADE', 5, 'PENDING'),
+(4, 2, 1, 0, 500, 'READY-MADE', 4, 'PENDING'),
+(5, 3, 2, 0, 300, 'READY-MADE', 5, 'PENDING'),
+(6, 4, 0, 3, 600, 'CUSTOM-MADE', 3, 'PENDING'),
+(7, 4, 0, 4, 400, 'CUSTOM-MADE', 4, 'PENDING'),
+(8, 4, 2, 0, 300, 'READY-MADE', 1, 'PENDING');
 
 -- --------------------------------------------------------
 
@@ -128,17 +135,19 @@ INSERT INTO `product` (`ID`, `PROD_IMG`, `PROD_NAME`, `PROD_DESC`, `PROD_PRICE`,
 CREATE TABLE `purchase_records` (
   `ID` int(8) NOT NULL,
   `CUSTOMER_ID_FK` int(11) NOT NULL,
-  `PRODUCT_ID_FK` int(11) NOT NULL,
-  `REQUEST_ID_FK` int(11) NOT NULL,
-  `DATE_RECORDED` date NOT NULL
+  `ORDER_ID_FK` int(11) NOT NULL,
+  `PURCHASE_DATE` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `purchase_records`
 --
 
-INSERT INTO `purchase_records` (`ID`, `CUSTOMER_ID_FK`, `PRODUCT_ID_FK`, `REQUEST_ID_FK`, `DATE_RECORDED`) VALUES
-(1, 1, 2, 1, '2023-05-11');
+INSERT INTO `purchase_records` (`ID`, `CUSTOMER_ID_FK`, `ORDER_ID_FK`, `PURCHASE_DATE`) VALUES
+(1, 4, 1, '2023-05-09'),
+(2, 4, 2, '2023-05-08'),
+(3, 4, 6, '2023-05-08'),
+(4, 4, 7, '2023-05-07');
 
 -- --------------------------------------------------------
 
@@ -152,7 +161,7 @@ CREATE TABLE `request_order` (
   `PRODUCT_ID_FK` int(11) NOT NULL,
   `REQUEST_DESCRIPTION` longtext NOT NULL,
   `REQUEST_QUANTITY` int(11) NOT NULL,
-  `REQUEST_STATUS` varchar(50) NOT NULL
+  `REQUEST_STATUS` enum('PENDING','ACCEPTED') NOT NULL DEFAULT 'PENDING'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -162,7 +171,10 @@ CREATE TABLE `request_order` (
 INSERT INTO `request_order` (`ID`, `CUSTOMER_ID_FK`, `PRODUCT_ID_FK`, `REQUEST_DESCRIPTION`, `REQUEST_QUANTITY`, `REQUEST_STATUS`) VALUES
 (1, 1, 1, 'dsfdfvfewa', 1, 'PENDING'),
 (2, 2, 2, 'asdascasvwewbretraa', 3, 'PENDING'),
-(3, 4, 1, 'gdbgret', 3, 'PENDING');
+(3, 4, 1, 'gdbgret', 3, 'PENDING'),
+(4, 4, 2, 'gsfsregretbaefavweta', 4, 'PENDING'),
+(5, 4, 1, 'eaeadfvewtbrt', 4, 'PENDING'),
+(6, 4, 2, 'ervawerbawt4', 3, 'PENDING');
 
 --
 -- Indexes for dumped tables
@@ -203,11 +215,8 @@ ALTER TABLE `product`
 --
 ALTER TABLE `purchase_records`
   ADD PRIMARY KEY (`ID`),
-  ADD UNIQUE KEY `CUSTOMER_ID_FK_2` (`CUSTOMER_ID_FK`),
   ADD KEY `CUSTOMER_ID_FK` (`CUSTOMER_ID_FK`),
-  ADD KEY `PRODUCT_ID_FK` (`PRODUCT_ID_FK`),
-  ADD KEY `REQUEST_ID_FK` (`REQUEST_ID_FK`),
-  ADD KEY `CUSTOMER_ID_FK_3` (`CUSTOMER_ID_FK`);
+  ADD KEY `ORDER_ID_FK` (`ORDER_ID_FK`);
 
 --
 -- Indexes for table `request_order`
@@ -237,7 +246,7 @@ ALTER TABLE `customers`
 -- AUTO_INCREMENT for table `orderslip`
 --
 ALTER TABLE `orderslip`
-  MODIFY `ID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `product`
@@ -249,13 +258,13 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT for table `purchase_records`
 --
 ALTER TABLE `purchase_records`
-  MODIFY `ID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `ID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `request_order`
 --
 ALTER TABLE `request_order`
-  MODIFY `ID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables
@@ -265,9 +274,8 @@ ALTER TABLE `request_order`
 -- Constraints for table `purchase_records`
 --
 ALTER TABLE `purchase_records`
-  ADD CONSTRAINT `purchase_records_ibfk_1` FOREIGN KEY (`CUSTOMER_ID_FK`) REFERENCES `customers` (`ID`),
-  ADD CONSTRAINT `purchase_records_ibfk_2` FOREIGN KEY (`PRODUCT_ID_FK`) REFERENCES `product` (`ID`),
-  ADD CONSTRAINT `purchase_records_ibfk_3` FOREIGN KEY (`REQUEST_ID_FK`) REFERENCES `request_order` (`ID`);
+  ADD CONSTRAINT `purchase_records_ibfk_2` FOREIGN KEY (`CUSTOMER_ID_FK`) REFERENCES `customers` (`ID`),
+  ADD CONSTRAINT `purchase_records_ibfk_3` FOREIGN KEY (`ORDER_ID_FK`) REFERENCES `orderslip` (`ID`);
 
 --
 -- Constraints for table `request_order`
