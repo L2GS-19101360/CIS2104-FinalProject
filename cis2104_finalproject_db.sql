@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 08, 2023 at 06:36 PM
+-- Generation Time: May 10, 2023 at 07:39 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -45,22 +45,24 @@ CREATE TABLE `cosumer_chart` (
 CREATE TABLE `customers` (
   `ID` int(8) NOT NULL,
   `USER_IMG` varchar(100) NOT NULL,
+  `USER_TYPE` enum('CUSTOMER','ADMIN') NOT NULL DEFAULT 'CUSTOMER',
   `USER_FIRST_NAME` varchar(100) NOT NULL,
   `USER_LAST_NAME` varchar(100) NOT NULL,
   `USER_CONTACT_NUMBER` bigint(11) NOT NULL,
   `USER_EMAIL` varchar(100) NOT NULL,
   `USER_PASSWORD` varchar(100) NOT NULL,
-  `USER_ADDRESS` varchar(100) NOT NULL
+  `USER_ADDRESS` varchar(100) NOT NULL,
+  `USER_STATUS` enum('ACTIVE','INACTIVE') NOT NULL DEFAULT 'ACTIVE'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `customers`
 --
 
-INSERT INTO `customers` (`ID`, `USER_IMG`, `USER_FIRST_NAME`, `USER_LAST_NAME`, `USER_CONTACT_NUMBER`, `USER_EMAIL`, `USER_PASSWORD`, `USER_ADDRESS`) VALUES
-(1, '', 'Justin', 'Oport', 9123456789, 'justin@gmail.com', 'justin', 'Mandaue City, Guizo'),
-(2, '', 'Mary Rascel', 'Mayol', 9987456321, 'mary@gmail.com', 'mary', 'Canduman, Mandaue City'),
-(3, '', 'Lianne Raine', 'Badinas', 9369852147, 'lianne@gmail.com ', 'lianne', 'Talisay City, Cebu');
+INSERT INTO `customers` (`ID`, `USER_IMG`, `USER_TYPE`, `USER_FIRST_NAME`, `USER_LAST_NAME`, `USER_CONTACT_NUMBER`, `USER_EMAIL`, `USER_PASSWORD`, `USER_ADDRESS`, `USER_STATUS`) VALUES
+(1, '', 'CUSTOMER', 'Justin', 'Oport', 9123456789, 'justin@gmail.com', 'justin', 'Mandaue City, Guizo', 'ACTIVE'),
+(2, '', 'CUSTOMER', 'Mary Rascel', 'Mayol', 9987456321, 'mary@gmail.com', 'mary', 'Canduman, Mandaue City', 'ACTIVE'),
+(3, '', 'CUSTOMER', 'Lianne Raine', 'Badinas', 9369852147, 'lianne@gmail.com ', 'lianne', 'Talisay City, Cebu', 'ACTIVE');
 
 -- --------------------------------------------------------
 
@@ -75,7 +77,7 @@ CREATE TABLE `orderslip` (
   `REQUEST_ID_FK` int(11) NOT NULL,
   `ORDER_TYPE` varchar(50) NOT NULL,
   `ORDER_QUANTITY` int(11) NOT NULL,
-  `ORDER_STATUS` int(11) NOT NULL
+  `ORDER_STATUS` enum('PENDING','COMPLETE') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -126,7 +128,7 @@ CREATE TABLE `request_order` (
   `CUSTOMER_ID_FK` int(11) NOT NULL,
   `PRODUCT_ID_FK` int(11) NOT NULL,
   `REQUEST_DESCRIPTION` longtext NOT NULL,
-  `REQUEST_STATUS` int(11) NOT NULL
+  `REQUEST_STATUS` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
