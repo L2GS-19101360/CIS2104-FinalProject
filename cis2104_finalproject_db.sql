@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 10, 2023 at 07:39 AM
+-- Generation Time: May 10, 2023 at 12:34 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -32,9 +32,16 @@ CREATE TABLE `cosumer_chart` (
   `CUSTOMER_ID_FK` int(11) NOT NULL,
   `PRODUCT_ID_FK` int(11) NOT NULL,
   `REQUEST_ID_FK` int(11) NOT NULL,
-  `TYPE` varchar(50) NOT NULL,
-  `ORDER_QUANTITY` int(11) NOT NULL
+  `C_TYPE` varchar(50) NOT NULL,
+  `C_QUANTITY` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `cosumer_chart`
+--
+
+INSERT INTO `cosumer_chart` (`ID`, `CUSTOMER_ID_FK`, `PRODUCT_ID_FK`, `REQUEST_ID_FK`, `C_TYPE`, `C_QUANTITY`) VALUES
+(1, 4, 1, 0, 'READY-MADE', 1);
 
 -- --------------------------------------------------------
 
@@ -62,7 +69,8 @@ CREATE TABLE `customers` (
 INSERT INTO `customers` (`ID`, `USER_IMG`, `USER_TYPE`, `USER_FIRST_NAME`, `USER_LAST_NAME`, `USER_CONTACT_NUMBER`, `USER_EMAIL`, `USER_PASSWORD`, `USER_ADDRESS`, `USER_STATUS`) VALUES
 (1, '', 'CUSTOMER', 'Justin', 'Oport', 9123456789, 'justin@gmail.com', 'justin', 'Mandaue City, Guizo', 'ACTIVE'),
 (2, '', 'CUSTOMER', 'Mary Rascel', 'Mayol', 9987456321, 'mary@gmail.com', 'mary', 'Canduman, Mandaue City', 'ACTIVE'),
-(3, '', 'CUSTOMER', 'Lianne Raine', 'Badinas', 9369852147, 'lianne@gmail.com ', 'lianne', 'Talisay City, Cebu', 'ACTIVE');
+(3, '', 'CUSTOMER', 'Lianne Raine', 'Badinas', 9369852147, 'lianne@gmail.com ', 'lianne', 'Talisay City, Cebu', 'ACTIVE'),
+(4, '', 'CUSTOMER', 'Jaruz', 'Matero', 9666411308, 'jaruz@gmail.com', 'jaruz', 'Talisay', 'ACTIVE');
 
 -- --------------------------------------------------------
 
@@ -75,10 +83,18 @@ CREATE TABLE `orderslip` (
   `CUSTOMER_ID_FK` int(11) NOT NULL,
   `PRODUCT_ID_FK` int(11) NOT NULL,
   `REQUEST_ID_FK` int(11) NOT NULL,
-  `ORDER_TYPE` varchar(50) NOT NULL,
+  `ORDER_TYPE` enum('READY-MADE','CUSTOM-MADE') NOT NULL DEFAULT 'READY-MADE',
   `ORDER_QUANTITY` int(11) NOT NULL,
-  `ORDER_STATUS` enum('PENDING','COMPLETE') NOT NULL
+  `ORDER_STATUS` enum('PENDING','COMPLETE') NOT NULL DEFAULT 'PENDING'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `orderslip`
+--
+
+INSERT INTO `orderslip` (`ID`, `CUSTOMER_ID_FK`, `PRODUCT_ID_FK`, `REQUEST_ID_FK`, `ORDER_TYPE`, `ORDER_QUANTITY`, `ORDER_STATUS`) VALUES
+(1, 4, 2, 0, 'READY-MADE', 1, 'PENDING'),
+(2, 4, 1, 0, 'READY-MADE', 5, 'PENDING');
 
 -- --------------------------------------------------------
 
@@ -117,6 +133,13 @@ CREATE TABLE `purchase_records` (
   `DATE_RECORDED` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `purchase_records`
+--
+
+INSERT INTO `purchase_records` (`ID`, `CUSTOMER_ID_FK`, `PRODUCT_ID_FK`, `REQUEST_ID_FK`, `DATE_RECORDED`) VALUES
+(1, 1, 2, 1, '2023-05-11');
+
 -- --------------------------------------------------------
 
 --
@@ -128,8 +151,18 @@ CREATE TABLE `request_order` (
   `CUSTOMER_ID_FK` int(11) NOT NULL,
   `PRODUCT_ID_FK` int(11) NOT NULL,
   `REQUEST_DESCRIPTION` longtext NOT NULL,
+  `REQUEST_QUANTITY` int(11) NOT NULL,
   `REQUEST_STATUS` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `request_order`
+--
+
+INSERT INTO `request_order` (`ID`, `CUSTOMER_ID_FK`, `PRODUCT_ID_FK`, `REQUEST_DESCRIPTION`, `REQUEST_QUANTITY`, `REQUEST_STATUS`) VALUES
+(1, 1, 1, 'dsfdfvfewa', 1, 'PENDING'),
+(2, 2, 2, 'asdascasvwewbretraa', 3, 'PENDING'),
+(3, 4, 1, 'gdbgret', 3, 'PENDING');
 
 --
 -- Indexes for dumped tables
@@ -157,8 +190,7 @@ ALTER TABLE `orderslip`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `CUSTOMER_ID_FK` (`CUSTOMER_ID_FK`),
   ADD KEY `PRODUCT_ID_FK` (`PRODUCT_ID_FK`),
-  ADD KEY `REQUEST_ID_FK` (`REQUEST_ID_FK`),
-  ADD KEY `REQUEST_ID_FK_2` (`REQUEST_ID_FK`);
+  ADD KEY `REQUEST_ID_FK` (`REQUEST_ID_FK`);
 
 --
 -- Indexes for table `product`
@@ -171,9 +203,11 @@ ALTER TABLE `product`
 --
 ALTER TABLE `purchase_records`
   ADD PRIMARY KEY (`ID`),
+  ADD UNIQUE KEY `CUSTOMER_ID_FK_2` (`CUSTOMER_ID_FK`),
   ADD KEY `CUSTOMER_ID_FK` (`CUSTOMER_ID_FK`),
   ADD KEY `PRODUCT_ID_FK` (`PRODUCT_ID_FK`),
-  ADD KEY `REQUEST_ID_FK` (`REQUEST_ID_FK`);
+  ADD KEY `REQUEST_ID_FK` (`REQUEST_ID_FK`),
+  ADD KEY `CUSTOMER_ID_FK_3` (`CUSTOMER_ID_FK`);
 
 --
 -- Indexes for table `request_order`
@@ -191,19 +225,19 @@ ALTER TABLE `request_order`
 -- AUTO_INCREMENT for table `cosumer_chart`
 --
 ALTER TABLE `cosumer_chart`
-  MODIFY `ID` int(8) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `ID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `orderslip`
 --
 ALTER TABLE `orderslip`
-  MODIFY `ID` int(8) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `product`
@@ -215,25 +249,17 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT for table `purchase_records`
 --
 ALTER TABLE `purchase_records`
-  MODIFY `ID` int(8) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `request_order`
 --
 ALTER TABLE `request_order`
-  MODIFY `ID` int(8) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `orderslip`
---
-ALTER TABLE `orderslip`
-  ADD CONSTRAINT `orderslip_ibfk_1` FOREIGN KEY (`CUSTOMER_ID_FK`) REFERENCES `customers` (`ID`),
-  ADD CONSTRAINT `orderslip_ibfk_2` FOREIGN KEY (`PRODUCT_ID_FK`) REFERENCES `product` (`ID`),
-  ADD CONSTRAINT `orderslip_ibfk_3` FOREIGN KEY (`REQUEST_ID_FK`) REFERENCES `request_order` (`ID`);
 
 --
 -- Constraints for table `purchase_records`
