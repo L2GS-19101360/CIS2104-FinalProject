@@ -1,0 +1,268 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    background-color: #EAFDFC;
+}
+
+.side-bar {
+    height: 100vh;
+    width: 18%;
+    background-color: #BCFFFB;
+}
+
+.logo {
+    position: absolute;
+    top: 2%;
+    left: 2.5%;
+    height: 200px;
+    width: 230px;
+}
+
+.edit-logo {
+    position: absolute;
+    top: 25%;
+    left: 3%;
+    height: 50px;
+    width: 50px;
+}
+
+.side-bar h2 {
+    position: absolute;
+    top: 26.5%;
+    left: 6%;
+}
+
+.arrow-logo {
+    position: absolute;
+    top: 25.9%;
+    left: 14%;
+    height: 40px;
+    width: 40px;
+}
+
+.main-div {
+    height: 100vh;
+    width: 82.1%;
+    background-color: #7EE1DB;
+    position: absolute;
+    top: 0%;
+    left: 17.9%;
+}
+
+.main-div .user-profile {
+    position: absolute;
+    top: 10%;
+    left: 20%;
+    height: 200px;
+    width: 200px;
+}
+
+.main-div h1 {
+    position: absolute;
+    top: 5%;
+    left: 21%;
+}
+
+.fname-field {
+    position: absolute;
+    top: 11%;
+    left: 39%;
+    width: 430px;
+    height: 30px;
+    border-radius: 100px/80px;
+    padding: 20px;
+}
+
+.fname-label {
+    position: absolute;
+    top: 17%;
+    left: 50%;
+}
+
+.fname-logo {
+    position: absolute;
+    top: 10%;
+    left: 70%;
+    height: 50px;
+    width: 50px;
+}
+
+.lname-field {
+    position: absolute;
+    top: 25%;
+    left: 39%;
+    width: 430px;
+    height: 30px;
+    border-radius: 100px/80px;
+    padding: 20px;
+}
+
+.lname-label {
+    position: absolute;
+    top: 31%;
+    left: 50%;
+}
+
+.lname-logo {
+    position: absolute;
+    top: 24%;
+    left: 70%;
+    height: 50px;
+    width: 50px;
+}
+
+.email-field {
+    position: absolute;
+    top: 40%;
+    left: 15%;
+    width: 430px;
+    height: 30px;
+    border-radius: 100px/80px;
+    padding: 20px;
+}
+
+.email-label {
+    position: absolute;
+    top: 46%;
+    left: 27%;
+}
+
+.email-logo {
+    position: absolute;
+    top: 39%;
+    left: 46%;
+    height: 50px;
+    width: 50px;
+}
+
+.contact-field {
+    position: absolute;
+    top: 40%;
+    left: 55%;
+    width: 430px;
+    height: 30px;
+    border-radius: 100px/80px;
+    padding: 20px;
+}
+
+.contact-label {
+    position: absolute;
+    top: 46%;
+    left: 67%;
+}
+
+.contact-logo {
+    position: absolute;
+    top: 39%;
+    left: 85%;
+    height: 50px;
+    width: 50px;
+}
+
+.address-field {
+    position: absolute;
+    top: 54%;
+    left: 32%;
+    width: 570px;
+    height: 30px;
+    border-radius: 100px/80px;
+    padding: 20px;
+}
+
+.address-label {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+}
+
+.address-logo {
+    position: absolute;
+    top: 53%;
+    left: 73%;
+    height: 50px;
+    width: 50px;
+}
+
+.password-field {
+    position: absolute;
+    top: 68%;
+    left: 15%;
+    width: 430px;
+    height: 30px;
+    border-radius: 100px/80px;
+    padding: 20px;
+}
+
+.pass-label {
+    position: absolute;
+    top: 74%;
+    left: 25%;
+}
+
+.pass-logo {
+    position: absolute;
+    top: 67%;
+    left: 45%;
+    height: 50px;
+    width: 50px;
+}
+
+.con_pass-field {
+    position: absolute;
+    top: 68%;
+    left: 55%;
+    width: 430px;
+    height: 30px;
+    border-radius: 100px/80px;
+    padding: 20px;
+}
+
+.con_pass-label {
+    position: absolute;
+    top: 74%;
+    left: 67%;
+}
+
+.con_pass-logo {
+    position: absolute;
+    top: 67%;
+    left: 85%;
+    height: 50px;
+    width: 50px;
+}
+
+.btn-save {
+    position: absolute;
+    top: 85%;
+    left: 80%;
+    width: 150px;
+    height: 32px;
+    color: #103365;
+    background-color: #82AAE3;
+    font-size: 20px;
+    border-radius: 100px/80px;
+    cursor: pointer;
+}
+
+.user-logo {
+    position: absolute;
+    top: 29%;
+    left: 32%;
+    height: 50px;
+    width: 50px;
+}
+
+#userUpadateImg {
+    position: absolute;
+    top: 32%;
+    left: 20%;
+    height: 50px;
+    width: 150px;
+}
+

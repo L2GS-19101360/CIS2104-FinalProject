@@ -1,0 +1,646 @@
+*{
+  margin: 0%;
+  padding: 0%;
+  font-family: Arial, Helvetica, sans-serif;
+  list-style: none;
+  text-decoration: none;
+
+  /* overflow: hidden; */
+}
+
+/************************************************************
+****************           Login design            **********
+*************************************************************/ 
+.Logo {
+  position: absolute;
+  height: 500px;
+  width: 500px;
+  top: 17%;
+  left: 13%;
+}
+
+.welcome-text {
+  position: absolute;
+  top: 16%;
+  right: 26%;
+}
+
+.welcome-text h2 {
+  color: #103365;
+  font-size: 50px;
+}
+
+.email-field {
+  position: absolute;
+  top: 34%;
+  left: 51%;
+  width: 400px;
+  height: 30px;
+  border-radius: 100px/80px;
+  padding: 20px;
+}
+
+.password-field {
+  position: absolute;
+  top: 45%;
+  left: 51%;
+  width: 400px;
+  height: 30px;
+  border-radius: 100px/80px;
+  padding: 20px;
+}
+
+.btn-login {
+  position: absolute;
+  top: 60%;
+  right: 31%;
+  width: 100px;
+  height: 32px;
+  color: #103365;
+  background-color: #82AAE3;
+  font-size: 20px;
+  border-radius: 100px/80px;
+  cursor: pointer;
+}
+
+.ask-signup {
+  position: absolute;
+  top: 70%;
+  right: 28%;
+}
+
+.Warning-MessageLogin{
+  position: absolute;
+  top: 30%;
+  right:35%;
+  color: #103365;
+}
+
+/************************************************************
+****************            Nav display            **********
+*************************************************************/
+.display_head{
+    background: linear-gradient(360deg, rgba(0, 0, 0, 0.5) -10.95%, rgba(0, 0, 0, 0) 20.24%), rgba(188, 255, 251, 0.87);
+    display: flex;
+    max-height: 100%;
+    width: auto;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+}
+
+/*******************************logo***********************/
+.logo {  /*logo container*/
+    display: flex;
+    width: 15%;
+}
+
+.logo-image {   /*centers the logo inside the logo Container*/
+    padding-left: 20%;
+    cursor: pointer;
+}
+
+#logo-image {  /*automatic adjust the image logo to made it responsive*/
+    max-width:50%;
+    height: auto;
+}
+
+/********************************Search***********************/
+.search-bar {   /*Search container*/
+    display: flex;
+    justify-content: flex-end;
+    width: 60%;
+}
+
+#search-form {
+    display: flex;
+    margin-top: 2.5%;
+    position: relative;
+    width: 30rem;
+    height: 2.5rem;
+    border-radius: 0.7rem;
+}
+
+#search {
+    height: 2.5rem;
+    border: 0;
+    font-size: 1.8rem;
+}
+
+#search-icon {
+    max-width: 1rem;
+    height: auto;
+}
+
+.search-text { 
+    width: 100%;
+    background: #fff;
+    padding: 0 1.6rem;
+    border-radius: 0.7rem;
+}
+
+.search-button {
+    border-radius: 0.7rem 0.7rem ;
+    background: transparent;
+    width: 5rem;
+    cursor: pointer;
+}
+
+#search-form:hover {
+    background: #58C2BC;
+}
+
+/**************Nav bar icons******************/
+.icons {    
+    margin: 0 1rem;
+    display: block;
+    width: 25%;
+}
+
+.user-icons {   /***This sets the size of the icon***/
+    max-width: 2.5rem;
+    height: auto;
+}
+
+/*****************Chart icon********************/
+.record {    /***This sets the position of the chart icon***/
+  position: absolute;
+  top: 1.8rem;
+  right: 14rem;
+}
+
+/*****************Chart icon********************/
+.chart {    /***This sets the position of the chart icon***/
+  position: absolute;
+  top: 2rem;
+  right: 10rem;
+}
+
+/**************Contact icons******************/
+.contact {    /***This sets the position of the contact icon***/
+  position: absolute;
+  top: 2rem;
+  right: 6rem;
+}
+
+/**************Nav Sidebar******************/
+#menuToggle {
+  display: block;
+  position: absolute;
+  top: 2.5rem;
+  right: 2.5rem;
+  z-index: 1;
+
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+#menuToggle input
+{
+  display: block;
+  width: 40px;
+  height: 32px;
+  position: absolute;
+  top: -7px;
+  left: -5px;
+  
+  cursor: pointer;
+  
+  opacity: 0;
+  z-index: 2;
+  
+  -webkit-touch-callout: none;
+}
+
+#menuToggle span { /***For the hamburger sidebar animation***/
+  display: block;
+  width: 2rem;
+  height: 4px;
+  margin-bottom: 5px;
+  position: relative;
+  
+  background: #000000;
+  border-radius: 3px;
+  
+  z-index: 1;
+  
+  transform-origin: 4px 0px;
+  
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              opacity 0.55s ease;
+}
+
+#menuToggle span:first-child
+{
+  transform-origin: 0% 0%;
+}
+
+#menuToggle span:nth-last-child(2)
+{
+  transform-origin: 0% 100%;
+}
+
+#menuToggle input:checked ~ span
+{
+  opacity: 1;
+  transform: rotate(45deg) translate(-2px, -1px);
+  background: #232323;
+}
+
+
+#menuToggle input:checked ~ span:nth-last-child(3)
+{
+  opacity: 0;
+  transform: rotate(0deg) scale(0.2, 0.2);
+}
+
+#menuToggle input:checked ~ span:nth-last-child(2)
+{
+  opacity: 1;
+  transform: rotate(-45deg) translate(0, -1px);
+}
+
+#menu
+{
+  position: absolute;
+  width: 15rem;
+  height: 100vh;
+  margin: -100px 0 0 0;
+  padding: 50px;
+  padding-top: 125px;
+  right: -3rem;
+  
+  background: #7EE1DB;
+  list-style-type: none;
+  -webkit-font-smoothing: antialiased;
+
+  transform-origin: 0% 0%;
+  transform: translate(100%, 0);
+  
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+}
+
+#menu li
+{
+  padding: 10px 0;
+  font-size: 22px;
+}
+
+
+#menuToggle input:checked ~ ul
+{
+  transform: none;
+  opacity: 1;
+}
+
+
+/********************************************************************************************************
+**code it again to be a more responsive search bar dependes on devices width(400px, 600px, 900px)******** 
+*********************************************************************************************************/
+/* 
+@media (max-width: 400px) {
+
+  ======================================Search=============================
+  #search-form {
+      margin-top: 2.5%;
+      position: relative;
+      width: 10rem;
+      height: 1rem;
+      border-radius: 0.7rem;
+  }
+    
+  #search {
+    height: 1rem;
+    border: 0;
+    font-size: 1.8rem;
+  }
+    
+  #search-icon {
+    max-width: 1rem;
+    height: auto;
+  }
+    
+  .search-text { 
+    width: 100%;
+    background: #fff;
+    padding: 0 1.6rem;
+    border-radius: 0.7rem;
+  }
+    
+  .search-button {
+    border-radius: 0.7rem 0.7rem ;
+    background: transparent;
+    width: 5rem;
+    cursor: pointer;
+  }
+    
+  #search-form:hover {
+    background: #58C2BC;
+  }
+
+  ================================Menu=======================================
+  #menu {
+    transform: none;
+    opacity: 0;
+
+    transition: opacity 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+  }
+} */
+
+
+
+
+
+
+
+/************************************************************
+*******            body design display             **********
+*************************************************************/
+
+.display_body {
+    background: #7EE1DB;
+    height: 1000px;
+    width: 95.8rem;
+    display: flex;
+    justify-content: center;
+}
+
+/********************Home************************/
+.prod-listDisplay{     /****This is the table form****/
+  /* border-collapse: collapse; */
+  /* border: 2px solid #000000; */
+  width: 85rem;
+}
+
+.td_img_lenght{
+  
+  width: 10rem;
+}
+
+
+#prod-imgSize{
+  width:  130px;
+  height: 130px;
+  border: 1px solid #333333;
+  background-color: white;
+}
+
+
+/* .prod-listDisplay td{
+  border-collapse: collapse;
+  border: 2px solid #000000;
+} */
+
+#prod-name {
+  display: flex;
+  justify-content: center;
+  margin-top: 3.5rem;
+  width:  130px;
+}
+
+#prod-desc {
+  width:  60rem;
+  padding-left: 2rem;
+}
+
+#prod-price {
+  width:  130px;
+  display: flex;
+  justify-content: center;
+  margin-top: 3.5rem;
+}
+
+
+/*****************Product************************/
+.product-display {
+  display: block;
+  background: #7EE1DB;
+  height: 40.6rem;
+  width: 95.8rem;
+}
+
+.costume-order{
+  position: absolute;
+  /* background-color: yellow; */
+  height: 2rem;
+  width: 8rem;
+  color: #000000;
+  border: 0;
+  border-radius: 5px;
+
+  top: 1rem;
+  right: 5rem;
+
+  cursor: pointer;
+}
+
+.prod-image {
+  position: absolute;
+  /* background-color: red; */
+  height: 25rem;
+  width: 40rem;
+  border: 0;
+  border-radius: 10px;
+
+  top: 8rem;
+  left: 5rem;
+}
+
+#prod_img-size {
+  margin-left: 10%;
+  height: 100%;
+  width: 80%;
+  border-radius: 15px;
+}
+
+.prod-disc {
+  position: absolute;
+  /* background-color: green; */
+  height: 20rem;
+  width: 40rem;
+  border: 0;
+
+  top: 15rem;
+  right: 5rem;
+}
+
+.prod-name {
+  position: absolute;
+  /* background-color: rgb(128, 0, 94); */
+  height: 3rem;
+  width: 10rem;
+  border: 0;
+
+  top: 12rem;
+  right: 33rem;
+}
+
+.prod-price {
+  position: absolute;
+  /* background-color: blue; */
+  height: 2.5rem;
+  width: 10rem;
+  border: 0;
+
+  top: 37rem;
+  left: 14rem;
+}
+
+.order-button {
+  position: absolute;
+  /* background-color: rgb(255, 0, 123); */
+  height: 5rem;
+  width: 30rem;
+
+  border: 0;
+
+  top: 40rem;
+  right: 10rem;
+}
+
+#purProd-Name {
+  display: flex;
+  justify-content: center;
+  margin-top: 3.5rem;
+  width:  130px;
+}
+
+#purProd-Desc{
+  width:  25rem;
+  padding-left: 2rem;
+}
+
+#purProd-Type {
+  display: flex;
+  justify-content: center;
+  margin-top: 3.5rem;
+  width:  150px;
+}
+
+#purProd-Price {
+  padding-left: 2rem;
+  width:  50px;
+}
+
+#purProd-Quan {
+  padding-left: 2rem;
+  width:  50px;
+}
+
+#purProd-TPrice {
+  padding-left: 2rem;
+  width:  100px;
+}
+
+#purProd-Stat {
+  padding-left: 2rem;
+  width:  100px;
+}
+
+/*************************ABOUT US********************/
+
+.center-text h1 {
+  position: absolute;
+  top: 17%;
+  left: 39%;  
+  color: #576CBC;
+}
+
+.center-text h2 {
+  position: absolute;
+  top: 30%;
+  left: 15%;  
+  color: #576CBC;
+}
+
+.center-text .first-line {
+  position: relative;
+  transform: translateY(200%);
+  left: 0%;  
+  color: #576CBC;
+  font-size: 20px;
+}
+
+.center-text .second-line {
+  position: relative;
+  transform: translateY(130%);
+  margin-right: 8%;
+  left: 5%;  
+  color: #576CBC;
+  font-size: 20px;
+}
+
+.center-text .third-line {
+  position: relative;
+  transform: translateY(110%);
+  left: 5%;  
+  margin-right: 7%;
+  color: #576CBC;
+  font-size: 20px;
+}
+
+.center-text .motto {
+  position: absolute;
+  top: 65%;
+  left: 15%;  
+  color: #576CBC;
+}
+
+.center-text .motto-line {
+  position: relative;
+  transform: translateY(1450%);
+  left: 10%;  
+  color: #576CBC;
+  font-size: 20px;
+}
+
+
+.main-body {
+  background-color: #7EE1DB;
+}
+
+html, body {
+  overflow-x: hidden;
+}
+
+/********************************CONTACT US*************************/
+
+.map-picture {
+  position: absolute;
+  top: 24%;
+  left: 10%;
+  height: 30rem;
+  width: 40rem;
+}
+
+.main-text .contact-info {
+  position: absolute;
+  top: 30%;
+  left: 54%;  
+  color: #576CBC;
+  font-size: 30px;
+}
+
+.main-text .number-info {
+  position: absolute;
+  top: 40%;
+  left: 54%;  
+  color: #576CBC;
+  font-size: 30px;
+}
+
+.main-text h2 {
+  position: absolute;
+  top: 50%;
+  left: 54%;  
+  color: #576CBC;
+  font-size: 30px;
+}
+
+.main-text .address-info {
+  position: absolute;
+  top: 55%;
+  left: 54%;  
+  color: #576CBC;
+  font-size: 30px;
+}

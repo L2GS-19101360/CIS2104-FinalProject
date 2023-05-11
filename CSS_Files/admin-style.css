@@ -1,0 +1,42 @@
+*{
+    margin: 0%;
+    padding: 0%;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(145, 216, 228);
+    list-style: none;
+    text-decoration: none;
+}
+.title_bar{
+    position: relative;
+    top: 0%;
+    background-color: rgb(188, 255, 251);
+    /* width: 100%; */
+    padding: 5px;
+}
+/* #logo{
+    height: 100px;
+    width: 150px;
+} */
+nav{
+    background-color: rgb(188, 255, 251);
+    text-align: center;
+}
+nav a{
+    color: black;
+}
+nav ul{
+    display: inline-flex;
+}
+nav ul li{
+    width: 250px;
+    background-color: rgb(188, 255, 251);
+    padding: 10px;
+}
+nav ul li:hover{
+    cursor: pointer;
+    background-color: rgb(101, 202, 196);
+}
+#active_tab{
+    background-color: rgb(101, 202, 196);
+    
+}
