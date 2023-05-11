@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 10, 2023 at 05:26 PM
+-- Generation Time: May 11, 2023 at 02:31 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -67,10 +67,11 @@ CREATE TABLE `customers` (
 --
 
 INSERT INTO `customers` (`ID`, `USER_IMG`, `USER_TYPE`, `USER_FIRST_NAME`, `USER_LAST_NAME`, `USER_CONTACT_NUMBER`, `USER_EMAIL`, `USER_PASSWORD`, `USER_ADDRESS`, `USER_STATUS`) VALUES
-(1, '', 'CUSTOMER', 'Justin', 'Oport', 9123456789, 'justin@gmail.com', 'justin', 'Mandaue City, Guizo', 'ACTIVE'),
-(2, '', 'CUSTOMER', 'Mary Rascel', 'Mayol', 9987456321, 'mary@gmail.com', 'mary', 'Canduman, Mandaue City', 'ACTIVE'),
-(3, '', 'CUSTOMER', 'Lianne Raine', 'Badinas', 9369852147, 'lianne@gmail.com ', 'lianne', 'Talisay City, Cebu', 'ACTIVE'),
-(4, '', 'CUSTOMER', 'Jaruz', 'Matero', 9666411308, 'jaruz@gmail.com', 'jaruz', 'Talisay', 'ACTIVE');
+(1, 'UserProfile.png', 'CUSTOMER', 'Justin', 'Oport', 9123456789, 'justin@gmail.com', 'justin', 'Mandaue City, Guizo', 'ACTIVE'),
+(2, 'UserProfile.png', 'CUSTOMER', 'Mary Rascel', 'Mayol', 9987456321, 'mary@gmail.com', 'mary', 'Canduman, Mandaue City', 'ACTIVE'),
+(3, 'UserProfile.png', 'CUSTOMER', 'Lianne Raine', 'Badinas', 9369852147, 'lianne@gmail.com ', 'lianne', 'Talisay City, Cebu', 'ACTIVE'),
+(4, 'user2.jpg', 'CUSTOMER', 'Jaruzelski', 'Matero', 9698412587, 'jaruz@gmail.com', 'jaruz', 'Talisay', 'ACTIVE'),
+(5, '', 'ADMIN', 'Lorenz', 'Suico', 9336345126, 'suico@gmail.com', 'suico', 'Mandaue City', 'ACTIVE');
 
 -- --------------------------------------------------------
 
@@ -94,13 +95,13 @@ CREATE TABLE `orderslip` (
 --
 
 INSERT INTO `orderslip` (`ID`, `CUSTOMER_ID_FK`, `PRODUCT_ID_FK`, `REQUEST_ID_FK`, `ORDER_PRICE`, `ORDER_TYPE`, `ORDER_QUANTITY`, `ORDER_STATUS`) VALUES
-(1, 4, 2, 0, 300, 'READY-MADE', 1, 'PENDING'),
-(2, 4, 1, 0, 500, 'READY-MADE', 5, 'PENDING'),
+(1, 4, 2, 0, 300, 'READY-MADE', 1, 'COMPLETE'),
+(2, 4, 1, 0, 500, 'READY-MADE', 5, 'COMPLETE'),
 (3, 3, 1, 0, 500, 'READY-MADE', 5, 'PENDING'),
 (4, 2, 1, 0, 500, 'READY-MADE', 4, 'PENDING'),
 (5, 3, 2, 0, 300, 'READY-MADE', 5, 'PENDING'),
-(6, 4, 0, 3, 600, 'CUSTOM-MADE', 3, 'PENDING'),
-(7, 4, 0, 4, 400, 'CUSTOM-MADE', 4, 'PENDING'),
+(6, 4, 0, 3, 600, 'CUSTOM-MADE', 3, 'COMPLETE'),
+(7, 4, 0, 4, 400, 'CUSTOM-MADE', 4, 'COMPLETE'),
 (8, 4, 2, 0, 300, 'READY-MADE', 1, 'PENDING');
 
 -- --------------------------------------------------------
@@ -124,7 +125,11 @@ CREATE TABLE `product` (
 
 INSERT INTO `product` (`ID`, `PROD_IMG`, `PROD_NAME`, `PROD_DESC`, `PROD_PRICE`, `PROD_QUANTITY`) VALUES
 (1, 'type1.jpg', 'Chair', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam modi magni iure minus id sint odit quaerat explicabo voluptatibus animi sit, corporis consequatur nisi nemo non fugiat odio alias sunt ', 500, 15),
-(2, 'chair.png', 'Table', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam modi magni iure minus id sint odit quaerat explicabo voluptatibus animi sit, corporis consequatur nisi nemo non fugiat odio alias sunt ', 300, 10);
+(2, 'chair.png', 'Table', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam modi magni iure minus id sint odit quaerat explicabo voluptatibus animi sit, corporis consequatur nisi nemo non fugiat odio alias sunt ', 300, 10),
+(3, 'cabinet (1).png', 'Cabinet', 'jndjifwhvnueriveuaiw erhwuehrveuru weruywervqeunbrihue ', 600, 10),
+(4, 'dining (1).png', 'Dining Set', 'dfnat,tusbrntaretbat', 800, 15),
+(5, 'bed.png', 'Bed', 'befebmi9r eimvtwmefo ervreth t atb', 1200, 15),
+(6, 'couch (1).png', 'Couch', 'dbtgre tusnjrtrc srhsrysbt', 1300, 20);
 
 -- --------------------------------------------------------
 
@@ -240,7 +245,7 @@ ALTER TABLE `cosumer_chart`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `ID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `orderslip`
@@ -252,7 +257,7 @@ ALTER TABLE `orderslip`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `ID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `purchase_records`
