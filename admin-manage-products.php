@@ -49,6 +49,7 @@ $result = mysqli_query($est_conn, $sql);
             margin-left: 280px;
             /* border-top-left-radius: 10px;
             border-bottom-left-radius: 10px; */
+            /*removing this*/
         }
         .table_rows{
             background-color: white;
