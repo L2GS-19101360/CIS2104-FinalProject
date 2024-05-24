@@ -75,7 +75,7 @@
                                         Starting out as a simple furniture retail financing company with a three-man operation in Mandaue, Home Plan has grown to a twenty-five-man team. Home Plan has 
                                         been expanding its product line up with various brands and services.<p>
             <h2 class="motto">Corporate Motto<h2>
-                <p class="motto-line">• “A Commitment to Serve and an Endeavor to Excel in a Journey to Ultimate Success.”<p>
+                <p class="motto-line">• “A Commitment to dsdsds Serve and an Endeavor to Excel in a Journey to Ultimate Success.”<p>
         </div>
 
 
